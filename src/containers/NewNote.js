@@ -1,3 +1,4 @@
+import { API } from "aws-amplify";
 import React, { useRef, useState } from "react";
 import { ControlLabel, FormControl, FormGroup } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
@@ -29,6 +30,20 @@ export default function NewNote(props) {
     }
 
     setIsLoading(true);
+
+    try {
+      await createNote({ content });
+      props.history.push("/");
+    } catch (e) {
+      alert(e);
+      setIsLoading(false);
+    }
+  }
+
+  function createNote(note) {
+    return API.post("notes", "/notes", {
+      body: note
+    });
   }
 
   return (
