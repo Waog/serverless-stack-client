@@ -2,7 +2,7 @@ import { Auth } from "aws-amplify";
 import React, { useEffect, useState } from "react";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./App.css";
 import Routes from "./Routes";
 
@@ -31,6 +31,8 @@ function App(props) {
     await Auth.signOut();
 
     userHasAuthenticated(false);
+
+    props.history.push("/login");
   }
 
   return (
@@ -66,4 +68,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default withRouter(App);
