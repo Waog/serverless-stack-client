@@ -1,5 +1,6 @@
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
+  STRIPE_KEY: "pk_test_VJFsQHu2KmLhGE131Y2PWMDR00tnFwDru0",
   s3: {
     REGION: "eu-central-1",
     BUCKET: "waog-serverless-stack-tutorial"
